@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac995330-19a3-41da-8159-9dfd12ebc255" name="Changes" comment="elevators can pickup and get clients to dst floors - easy version">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MyComparator.java" afterDir="false" />
+    <list default="true" id="ac995330-19a3-41da-8159-9dfd12ebc255" name="Changes" comment="added priority queue customers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Elevator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevatorSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ElevatorSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MyComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CustomerComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ElevatorSystemTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ElevatorSystemTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +52,23 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="ElevatorSystemTests.testSystemOneElevator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ElevatorSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ElevatorSystemTests" />
+      <option name="METHOD_NAME" value="testSystemOneElevator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ElevatorSystemTests.testSystemOneElevator" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683904369701</updated>
-      <workItem from="1683904372700" duration="23402000" />
+      <workItem from="1683904372700" duration="45821000" />
     </task>
     <task id="LOCAL-00001" summary="added tests">
       <created>1683983105366</created>
@@ -76,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683996654401</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added priority queue customers">
+      <created>1684068495148</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1684068495148</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,17 +140,30 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added tests" />
     <MESSAGE value="elevators can pickup and get clients to dst floors - easy version" />
-    <option name="LAST_COMMIT_MESSAGE" value="elevators can pickup and get clients to dst floors - easy version" />
+    <MESSAGE value="added priority queue customers" />
+    <option name="LAST_COMMIT_MESSAGE" value="added priority queue customers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>10</line>
+          <line>13</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ElevatorSystemTests.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.example.ElevatorSystem" memberName="waitingCustomers" />
+        <PinnedItemInfo parentTag="org.example.Elevator" memberName="elCustomers" />
+        <PinnedItemInfo parentTag="org.example.Elevator" memberName="isFree" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

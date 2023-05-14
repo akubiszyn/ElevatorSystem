@@ -1,11 +1,11 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ElevatorSystem {
     private ArrayList<Elevator> elevators = new ArrayList<>();
     private ArrayList<Customer> customers = new ArrayList<Customer>();
+    private LinkedList<Customer> waitingCustomers = new LinkedList<>();
 
     public ArrayList<Customer> getCustomers() {
         return customers;
@@ -31,33 +31,29 @@ public class ElevatorSystem {
             }
         }
         if (idx == 0){
-            System.out.println("brak dostępnej windy");
+            this.waitingCustomers.add(customer);
         }
-        else{
-            this.update(idx, null, srcFloor);
-        }
-
     }
 
-    public void findBestElevator(int srcFloor, int direction){
-        Elevator bestElevator;
-        for (Elevator elevator : this.elevators){
-            int elevatorDirection = elevator.getDstFloor() - elevator.getCurrentFloor() >= 0 ? 1 : -1;
-            if ((elevator.getCurrentFloor() - srcFloor) * elevatorDirection == -1 && direction == elevatorDirection){
-
+    public void assignCustomers(Elevator elevator){
+        int elevatorDirection = elevator.getDstFloor() - elevator.getCurrentFloor() > 0 ? 1 : -1;
+        elevatorDirection = (elevator.getDstFloor() - elevator.getCurrentFloor() == 0 ? 0 : elevatorDirection);
+        ArrayList<Integer> idx = new ArrayList<>();
+        for (Customer customer : this.waitingCustomers){
+            if (elevator.getCurrentFloor() == customer.getSrcFloor() && (customer.getDirection() == elevatorDirection || elevatorDirection == 0)){
+                elevator.addCustomer(customer);
+                elevator.popDstFloor();
+                this.pickupCustomer(elevator, customer);
+                idx.add(this.waitingCustomers.indexOf(customer));
             }
         }
+        int j = 0;
+        for (int i : idx){
+            this.waitingCustomers.remove(i - j);
+            j++;
+        }
     }
 
-    public void update(int elevator_id, Integer current_floor, Integer dst_floor) {
-        Elevator elevator = this.elevators.get(elevator_id - 1);
-        if (current_floor != null){
-            elevator.setCurrentFloor(current_floor);
-        }
-        if (dst_floor != null){
-            elevator.setDstFloor(dst_floor);
-        }
-    }
 
     public void step() {
         System.out.println("Step:");
@@ -66,29 +62,44 @@ public class ElevatorSystem {
                 this.printMsg("Winda %d jest na piętrze %d", elevator.getElevatorId(), elevator.getCurrentFloor());
                 Customer customer = elevator.getCustomer();
                 if (elevator.getCurrentFloor() == elevator.getDstFloor()) {
-                    if (elevator.getDstFloor() == customer.getSrcFloor()) {
-                        this.printMsg("Winda %d dotarła do klienta %d", elevator.getElevatorId(), customer.getCustomerId());
-                        this.update(elevator.getElevatorId(), null, this.getFloor(customer));
+                    elevator.popDstFloor();
+                    if (elevator.getCurrentFloor() == customer.getSrcFloor()) {
+                        this.pickupCustomer(elevator, customer);
                     }
-                    else {
-                        elevator.isFree = true;
+                    else if (elevator.getCurrentFloor() == customer.getDstFloor()){
+                        elevator.rmvCustomer();
+                        if (!elevator.checkCustomers()){
+                            if (!this.waitingCustomers.isEmpty()){
+                                elevator.addCustomer(this.waitingCustomers.pop());
+                            }
+                            else{
+                                elevator.isFree = true;
+                            }
+                        }
                         this.printMsg("Winda %d zawiozła klienta %d do celu", elevator.getElevatorId(), customer.getCustomerId());
-                        continue;
                     }
                 }
-                int nextFloor = elevator.getCurrentFloor() + (elevator.getDstFloor() - elevator.getCurrentFloor() >= 0 ? 1 : -1);
-                this.update(elevator.getElevatorId(), nextFloor, null);
+                this.assignCustomers(elevator);
+                int nextFloor = elevator.getCurrentFloor() + (elevator.getDstFloor() - elevator.getCurrentFloor() > 0 ? 1 : -1);
+                nextFloor = (elevator.isFree ? 0 : nextFloor);
+                elevator.setCurrentFloor(nextFloor);
 
             }
         }
     }
+
+    private void pickupCustomer(Elevator elevator, Customer customer) {
+        this.printMsg("Winda %d dotarła do klienta %d", elevator.getElevatorId(), customer.getCustomerId());
+        elevator.addDstFloor(this.getFloor(customer));
+    }
+
     private int getFloor(Customer customer){
         if (customer.getDstFloor() == -1) {
             Scanner scan = new Scanner(System.in);
             System.out.println("Podaj piętro");
             int floor = Integer.parseInt(scan.nextLine());
             customer.setDstFloor(floor);
-            return Integer.parseInt(scan.nextLine());
+            return floor;
         }
         else{
             return customer.getDstFloor();

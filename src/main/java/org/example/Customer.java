@@ -43,4 +43,5 @@ public class Customer {
     public void setDstFloor(int dstFloor) {
         this.dstFloor = dstFloor;
     }
+
 }
