@@ -1,4 +1,4 @@
-package org.example;
+package org.elevatorSystem;
 
 import java.util.*;
 
@@ -58,7 +58,7 @@ public class ElevatorSystem {
         System.out.println("Step:");
         for (Elevator elevator : this.elevators ) {
             if (!elevator.isFree) {
-                this.printMsg("Winda %d jest na piętrze %d", elevator.getElevatorId(), elevator.getCurrentFloor());
+                this.printMsg("Elevator %d is on %d floor", elevator.getElevatorId(), elevator.getCurrentFloor());
                 Customer customer = elevator.getCustomer();
                 this.checkIfDstFloor(elevator, customer);
                 this.assignCustomers(elevator);
@@ -81,7 +81,7 @@ public class ElevatorSystem {
             }
             else if (elevator.getCurrentFloor() == customer.getDstFloor()){
                 elevator.rmvCustomer();
-                this.printMsg("Winda %d zawiozła klienta %d do celu", elevator.getElevatorId(), customer.getCustomerId());
+                this.printMsg("Elevator %d got client %d to destination floor", elevator.getElevatorId(), customer.getCustomerId());
                 if (!elevator.checkCustomers()){
                     this.addNewCustomers(elevator);
                 }
@@ -105,14 +105,14 @@ public class ElevatorSystem {
     }
 
     private void pickupCustomer(Elevator elevator, Customer customer) {
-        this.printMsg("Winda %d dotarła do klienta %d", elevator.getElevatorId(), customer.getCustomerId());
+        this.printMsg("Elevator %d reached client %d", elevator.getElevatorId(), customer.getCustomerId());
         elevator.addDstFloor(this.getFloor(customer));
     }
 
     private int getFloor(Customer customer){
         if (customer.getDstFloor() == -1) {
             Scanner scan = new Scanner(System.in);
-            System.out.println("Podaj piętro");
+            System.out.println("Type floor");
             int floor = Integer.parseInt(scan.nextLine());
             customer.setDstFloor(floor);
             return floor;

@@ -1,4 +1,4 @@
-package org.example;
+package org.elevatorSystem;
 
 public class Customer {
     private int customerId;

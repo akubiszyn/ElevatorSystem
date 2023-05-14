@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac995330-19a3-41da-8159-9dfd12ebc255" name="Changes" comment="system works for many elevators and many customers">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ElevatorSystemTests.java" beforeDir="false" />
+    <list default="true" id="ac995330-19a3-41da-8159-9dfd12ebc255" name="Changes" comment="fixed bugs">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CustomerComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/CustomerComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/Elevator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ElevatorSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/ElevatorSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683904369701</updated>
-      <workItem from="1683904372700" duration="54800000" />
+      <workItem from="1683904372700" duration="55312000" />
     </task>
     <task id="LOCAL-00001" summary="added tests">
       <created>1683983105366</created>
@@ -109,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684099192485</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed bugs">
+      <created>1684101039108</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684101039108</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,7 +162,8 @@
     <MESSAGE value="added priority queue customers" />
     <MESSAGE value="system works for one elevator and multiple customers" />
     <MESSAGE value="system works for many elevators and many customers" />
-    <option name="LAST_COMMIT_MESSAGE" value="system works for many elevators and many customers" />
+    <MESSAGE value="fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -163,7 +174,7 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/elevatorSystem/Main.java</url>
           <line>17</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
