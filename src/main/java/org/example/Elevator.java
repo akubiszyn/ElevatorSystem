@@ -1,21 +1,22 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Comparator;
+
 public class Elevator {
     private int elevatorId;
     private int currentFloor;
-    private int srcFloor;
     private int dstFloor;
     public boolean isFree;
 
-    private int customer;
+    PriorityQueue<Customer> elCustomers = new PriorityQueue<>(new MyComparator());
 
     public Elevator(int elevatorId) {
         this.elevatorId = elevatorId;
         this.currentFloor = 0;
-        this.srcFloor = -1;
         this.dstFloor = -1;
         this.isFree = true;
-        this.customer = -1;
     }
 
     public int getElevatorId() {
@@ -30,14 +31,6 @@ public class Elevator {
         this.currentFloor = currentFloor;
     }
 
-    public int getSrcFloor() {
-        return srcFloor;
-    }
-
-    public void setSrcFloor(int srcFloor) {
-        this.srcFloor = srcFloor;
-    }
-
     public int getDstFloor() {
         return dstFloor;
     }
@@ -46,11 +39,11 @@ public class Elevator {
         this.dstFloor = dstFloor;
     }
 
-    public int getCustomer() {
-        return customer;
+    public Customer getCustomer() {
+        return elCustomers.peek();
     }
 
-    public void setCustomer(int customer) {
-        this.customer = customer;
+    public void addCustomer(Customer customer){
+        this.elCustomers.add(customer);
     }
 }

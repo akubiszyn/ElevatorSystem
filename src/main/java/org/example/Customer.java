@@ -4,6 +4,7 @@ public class Customer {
     private int customerId;
     private int srcFloor;
     private int direction;
+    private int dstFloor = -1;
 
     public Customer(int customerId, int srcFloor, int direction) {
         this.customerId = customerId;
@@ -33,5 +34,13 @@ public class Customer {
 
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    public int getDstFloor() {
+        return dstFloor;
+    }
+
+    public void setDstFloor(int dstFloor) {
+        this.dstFloor = dstFloor;
     }
 }
