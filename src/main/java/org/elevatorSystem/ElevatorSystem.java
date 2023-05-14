@@ -34,7 +34,7 @@ public class ElevatorSystem {
         }
     }
 
-    public void assignCustomers(Elevator elevator){
+    private void assignCustomers(Elevator elevator){
         int elevatorDirection = elevator.getDstFloor() - elevator.getCurrentFloor() > 0 ? 1 : -1;
         elevatorDirection = (elevator.getDstFloor() - elevator.getCurrentFloor() == 0 ? 0 : elevatorDirection);
         ArrayList<Integer> idx = new ArrayList<>();
@@ -62,18 +62,18 @@ public class ElevatorSystem {
                 Customer customer = elevator.getCustomer();
                 this.checkIfDstFloor(elevator, customer);
                 this.assignCustomers(elevator);
-                int nextFloor = elevator.getCurrentFloor() + (elevator.getDstFloor() - elevator.getCurrentFloor() > 0 ? 1 : -1);
-                nextFloor = (elevator.isFree ? 0 : nextFloor);
-                elevator.setCurrentFloor(nextFloor);
+                elevator.setCurrentFloor(this.calculateNextFloor(elevator));
 
             }
         }
     }
-    public void update(int elevatorId, int dstFloor){
-        elevators.get(elevatorId-1).addDstFloor(dstFloor);
+    private int calculateNextFloor(Elevator elevator){
+        int nextFloor = elevator.getCurrentFloor() + (elevator.getDstFloor() - elevator.getCurrentFloor() > 0 ? 1 : -1);
+        nextFloor = (elevator.isFree ? 0 : nextFloor);
+        return nextFloor;
     }
 
-    public void checkIfDstFloor(Elevator elevator, Customer customer){
+    private void checkIfDstFloor(Elevator elevator, Customer customer){
         if (elevator.getCurrentFloor() == elevator.getDstFloor()) {
             elevator.popDstFloor();
             if (elevator.getCurrentFloor() == customer.getSrcFloor()) {
