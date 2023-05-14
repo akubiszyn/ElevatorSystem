@@ -1,6 +1,6 @@
 package org.example;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Collections;
 
@@ -11,7 +11,7 @@ public class Elevator {
     private ArrayList<Integer> dstFloor = new ArrayList<>();
     public boolean isFree;
 
-    PriorityQueue<Customer> elCustomers = new PriorityQueue<>(new CustomerComparator());
+    private ArrayList<Customer> elCustomers = new ArrayList<>();
 
     public Elevator(int elevatorId) {
         this.elevatorId = elevatorId;
@@ -48,10 +48,12 @@ public class Elevator {
     }
 
     public Customer getCustomer() {
-        return elCustomers.peek();
+        Collections.sort(this.elCustomers, new CustomerComparator());
+        return this.elCustomers.get(0);
     }
+
     public void rmvCustomer(){
-        elCustomers.remove();
+        elCustomers.remove(0);
     }
     public boolean checkCustomers(){
         if (elCustomers.isEmpty()){

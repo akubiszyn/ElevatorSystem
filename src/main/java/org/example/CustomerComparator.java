@@ -7,9 +7,10 @@ public class CustomerComparator implements Comparator<Customer> {
     public int compare(Customer o1, Customer o2) {
         int o1Floor = o1.getDstFloor();
         int o2Floor = o2.getDstFloor();
-        if (o1Floor == -1){
+        if (o1Floor == -1) {
             o1Floor = o1.getSrcFloor();
-        } else if (o2Floor == -1) {
+        }
+        if(o2Floor == -1){
             o2Floor = o2.getSrcFloor();
         }
         if (o1.getDirection() == 1){

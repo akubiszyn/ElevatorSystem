@@ -17,7 +17,6 @@ public class ElevatorSystem {
         }
     }
 
-
     public void pickup(int srcFloor, int direction) {
         Customer customer = new Customer(this.customers.size() + 1, srcFloor, direction);
         customers.add(customer);
@@ -61,30 +60,47 @@ public class ElevatorSystem {
             if (!elevator.isFree) {
                 this.printMsg("Winda %d jest na piętrze %d", elevator.getElevatorId(), elevator.getCurrentFloor());
                 Customer customer = elevator.getCustomer();
-                if (elevator.getCurrentFloor() == elevator.getDstFloor()) {
-                    elevator.popDstFloor();
-                    if (elevator.getCurrentFloor() == customer.getSrcFloor()) {
-                        this.pickupCustomer(elevator, customer);
-                    }
-                    else if (elevator.getCurrentFloor() == customer.getDstFloor()){
-                        elevator.rmvCustomer();
-                        if (!elevator.checkCustomers()){
-                            if (!this.waitingCustomers.isEmpty()){
-                                elevator.addCustomer(this.waitingCustomers.pop());
-                            }
-                            else{
-                                elevator.isFree = true;
-                            }
-                        }
-                        this.printMsg("Winda %d zawiozła klienta %d do celu", elevator.getElevatorId(), customer.getCustomerId());
-                    }
-                }
+                this.checkIfDstFloor(elevator, customer);
                 this.assignCustomers(elevator);
                 int nextFloor = elevator.getCurrentFloor() + (elevator.getDstFloor() - elevator.getCurrentFloor() > 0 ? 1 : -1);
                 nextFloor = (elevator.isFree ? 0 : nextFloor);
                 elevator.setCurrentFloor(nextFloor);
 
             }
+        }
+    }
+    public void update(int elevatorId, int dstFloor){
+        elevators.get(elevatorId-1).addDstFloor(dstFloor);
+    }
+
+    public void checkIfDstFloor(Elevator elevator, Customer customer){
+        if (elevator.getCurrentFloor() == elevator.getDstFloor()) {
+            elevator.popDstFloor();
+            if (elevator.getCurrentFloor() == customer.getSrcFloor()) {
+                this.pickupCustomer(elevator, customer);
+            }
+            else if (elevator.getCurrentFloor() == customer.getDstFloor()){
+                elevator.rmvCustomer();
+                this.printMsg("Winda %d zawiozła klienta %d do celu", elevator.getElevatorId(), customer.getCustomerId());
+                if (!elevator.checkCustomers()){
+                    this.addNewCustomers(elevator);
+                }
+                else{
+                    customer = elevator.getCustomer();
+                    this.checkIfDstFloor(elevator, customer);
+                }
+            }
+        }
+    }
+
+    private void addNewCustomers(Elevator elevator) {
+        if (!this.waitingCustomers.isEmpty()){
+            Customer newCustomer = this.waitingCustomers.pop();
+            elevator.addCustomer(newCustomer);
+            this.checkIfDstFloor(elevator, newCustomer);
+        }
+        else{
+            elevator.isFree = true;
         }
     }
 
