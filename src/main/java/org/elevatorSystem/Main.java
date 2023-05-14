@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ElevatorSystem elevatorSystem = new ElevatorSystem(3);
-
+        System.out.println("--------------------------");
+        System.out.println("This is elevator system. How many elevators are in the building?");
+        Scanner in = new Scanner(System.in);
+        String nElevators = in.nextLine();
+        ElevatorSystem elevatorSystem = new ElevatorSystem(Integer.parseInt(nElevators));
         while(true) {
             System.out.println("--------------------------");
-            System.out.println("This is elevator system. Choose:");
-            System.out.println("New customer: 1 \nMake a step: 2 \nShow status of elevators: 3 \n");
-            Scanner in = new Scanner(System.in);
+            System.out.println("Choose a number: \nNew customer: 1 \nMake a step: 2 \nShow status of elevators: 3 \n");
             String request = in.nextLine();
             System.out.println("You chose " + request);
             switch (request) {

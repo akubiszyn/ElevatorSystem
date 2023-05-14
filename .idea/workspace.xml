@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac995330-19a3-41da-8159-9dfd12ebc255" name="Changes" comment="fixed bugs">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/ElevatorSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/ElevatorSystem.java" afterDir="false" />
+    <list default="true" id="ac995330-19a3-41da-8159-9dfd12ebc255" name="Changes" comment="changed some method from public to private">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/elevatorSystem/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683904369701</updated>
-      <workItem from="1683904372700" duration="55681000" />
+      <workItem from="1683904372700" duration="56695000" />
     </task>
     <task id="LOCAL-00001" summary="added tests">
       <created>1683983105366</created>
@@ -122,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684101621650</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="changed some method from public to private">
+      <created>1684102056944</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684102056944</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +174,8 @@
     <MESSAGE value="system works for one elevator and multiple customers" />
     <MESSAGE value="system works for many elevators and many customers" />
     <MESSAGE value="fixed bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs" />
+    <MESSAGE value="changed some method from public to private" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed some method from public to private" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
